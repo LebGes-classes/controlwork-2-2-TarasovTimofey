@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class Writer {
-
     private List<Program> programs;
     private String fileName;
 
@@ -20,13 +19,13 @@ public class Writer {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("TV Guide");
 
-        // Создание заголовков столбцов
+        // cоздание заголовков столбцов
         Row headerRow = sheet.createRow(0);
         headerRow.createCell(0).setCellValue("Канал");
         headerRow.createCell(1).setCellValue("Время");
         headerRow.createCell(2).setCellValue("Название");
 
-        // Заполнение строк данными
+        //  заполнение строк данными
         int rowNum = 1;
         for (Program program : programs) {
             Row row = sheet.createRow(rowNum++);
@@ -35,12 +34,12 @@ public class Writer {
             row.createCell(2).setCellValue(program.getTitle());
         }
 
-        // Автоматическая подгонка ширины столбцов
+        // автоматическая подгонка ширины столбцов (сделал для красоты)
         for (int i = 0; i < 3; i++) {
             sheet.autoSizeColumn(i);
         }
 
-        // Сохранение файла
+        // сохранение файла
         try (FileOutputStream outputStream = new FileOutputStream(fileName)) {
             workbook.write(outputStream);
         }

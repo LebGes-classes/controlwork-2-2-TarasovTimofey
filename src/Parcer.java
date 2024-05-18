@@ -25,15 +25,11 @@ public class Parcer {
             }
         }
 
+        //работа со streamapi
         outputPrograms();
-
         searchByNow();
-
         searchByChannelNow();
-
         searchByName();
-
-
     }
 
     public void outputPrograms() {
